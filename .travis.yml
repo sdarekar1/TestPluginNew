@@ -11,7 +11,7 @@ before_install:
   
 script:
  - mvn deploy
- - mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release --settings .travis/settings.xml
+ - mvn clean deploy -P release --settings .travis/settings.xml
 
 deploy:
     provider: script
