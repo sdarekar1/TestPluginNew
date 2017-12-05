@@ -11,7 +11,7 @@
   <licenses>
   		<license>
    		 <name>The Apache License, Version 2.0</name>
-    	 <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    	 <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
       </license>
   </licenses>
   <!-- Add Developer's Information -->
@@ -27,7 +27,7 @@
    <scm>
   <connection>scm:git:git://github.com/SujataDarekar/TestPlugin</connection>
   <developerConnection>scm:git:ssh://github.com:SujataDarekar/TestPlugin.git</developerConnection>
-  <url>http://github.com/SujataDarekar/TestPlugin</url>
+  <url>https://github.com/SujataDarekar/TestPlugin</url>
 </scm>
  
   
