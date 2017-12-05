@@ -14,7 +14,7 @@ before_install:
  #- mvn clean deploy -P release --settings .travis/settings.xml
 
 deploy:
-    provider: script
+    provider: releases
     script: .travis/deploy.sh
     skip_cleanup: true
     on:
