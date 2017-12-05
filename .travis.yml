@@ -19,13 +19,5 @@ deploy:
     skip_cleanup: true
     on:
       repo: SujataDarekar/TestPlugin
-      branch: master
-      jdk: oraclejdk8
-      
-    provider: script
-    script: .travis/deploy.sh
-    skip_cleanup: true
-    on:
-      repo: SujataDarekar/TestPlugin
       tags: true
       jdk: oraclejdk8
