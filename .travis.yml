@@ -18,6 +18,14 @@ deploy:
     script: .travis/deploy.sh
     skip_cleanup: true
     on:
-      repo: ExampleOrg/my-library
+      repo: https://github.com/SujataDarekar/TestPlugin
       branch: master
+      jdk: oraclejdk8
+      
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: https://github.com/SujataDarekar/TestPlugin
+      tags: true
       jdk: oraclejdk8
