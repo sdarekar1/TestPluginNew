@@ -8,19 +8,20 @@ install:
 before_install:
   - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
   - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
-  - if [ ! -z "$SONATYPE_USERNAME" ]; then echo $SONATYPE_USERNAME; fi
+  
+
 script:
- - mvn versions:set -DnewVersion=0.0.4
+ - mvn versions:set -DnewVersion=0.0.5
  - mvn --settings .travis/settings.xml deploy -Dgpg.passphrase=$GPG_PASSPHRASE
- #- mvn --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
+ #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
  #- mvn help:effective-settings
- # - mvn --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml deploy -Dgpg.passphrase=$GPG_PASSPHRASE
+ # - mvn --settings .travis/settings.xml deploy -Dgpg.passphrase=$GPG_PASSPHRASE
 
 deploy:
     provider: releases
     script: .travis/deploy.sh
     skip_cleanup: true
     on:
-      repo: SujataDarekar/TestPlugin
+      repo: Test/TestPlugin
       tags: true
       jdk: oraclejdk8
