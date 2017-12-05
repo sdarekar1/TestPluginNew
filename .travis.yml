@@ -13,7 +13,7 @@ before_install:
 script:
  - mvn deploy -Dgpg.passphrase=$GPG_PASSPHRASE
 
- deploy:
+deploy:
     provider: script
     script: .travis/deploy.sh
     skip_cleanup: true
