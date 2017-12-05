@@ -1,0 +1,32 @@
+language: 
+   - java
+version: 1.7
+sudo: false
+os: Windows10
+
+services:
+ - docker
+
+
+
+script:
+ - mvn compile
+ - mvn package
+ - mvn install
+ - mvn deploy -Dgpg.passphrase=Sujata123#
+ 
+deploy:
+    provider: script
+    script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy"
+    skip_cleanup: true
+    on:
+        tags: true
+  #provider: releases
+  #api_key: $GITHUB_API_KEY
+ # file:
+   #  - /home/travis/build/SujataDarekar/NewMavenRepository/Source/bw6-maven-plugin/target/bw6-maven-plugin-1.2.2.jar
+   #  - /home/travis/build/SujataDarekar/NewMavenRepository/Installer/TIB_BW_Maven_Plugin_1.2.2.zip
+ # skip_cleanup: true
+  #on: 
+ # tags: true
+ # overwrite: true
