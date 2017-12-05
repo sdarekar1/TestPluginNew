@@ -22,6 +22,6 @@ deploy:
     script: .travis/deploy.sh
     skip_cleanup: true
     on:
-      repo: Test/TestPlugin
+      repo: SujataDarekar/TestPlugin
       tags: true
       jdk: oraclejdk8
