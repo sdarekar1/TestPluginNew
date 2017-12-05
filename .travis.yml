@@ -10,7 +10,7 @@ before_install:
   - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
   
 script:
- - mvn deploy -Dgpg.passphrase=Sujata123#
+ - mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
  #- mvn clean deploy -P release --settings .travis/settings.xml
 
 deploy:
