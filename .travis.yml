@@ -15,18 +15,17 @@ before_install:
   
 
 script:
- - "echo \"<settings><servers><server><id>ossrh</id><username>\\$SONATYPE_USERNAME</username><password>\\$SONATYPE_PASSWORD</password></server></servers></settings>\" > /home/travis/.m2/repository/settings.xml"
- - mvn help:effective-settings
- - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
- - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
- - mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release 
+    - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
+# - mvn help:effective-settings
+# - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
+ #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release 
  #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
  #- mvn help:effective-settings
  # - mvn --settings .travis/settings.xml deploy -Dgpg.passphrase=$GPG_PASSPHRASE
 
 deploy:
     provider: script
-    script: .travis/deploy.sh
+    script: "cp .travis/settings.xml /home/travis/.m2/settings.xml && mvn deploy -Dgpg.passphrase=$GPG_PASSPHRASE"
     skip_cleanup: true
     on:
       repo: SujataDarekar/TestPlugin
