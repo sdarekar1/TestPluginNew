@@ -13,7 +13,8 @@ before_install:
 script:
  - mvn versions:set -DnewVersion=0.0.5
  - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
- - mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
+ - mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U 
+ #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
  #- mvn help:effective-settings
  # - mvn --settings .travis/settings.xml deploy -Dgpg.passphrase=$GPG_PASSPHRASE
 
