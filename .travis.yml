@@ -11,7 +11,7 @@ before_install:
   
 
 script:
- - "echo \"<settings><servers><server><id>ossrh</id><username>\\$SONATYPE_USERNAME</username><password>\\$SONATYPE_PASSWORD</password></server></servers></settings>\" > ~/settings.xml"
+ - "echo \"<settings><servers><server><id>ossrh</id><username>\\$SONATYPE_USERNAME</username><password>\\$SONATYPE_PASSWORD</password></server></servers></settings>\" > /home/travis/.m2/repository/settings.xml"
  - mvn help:effective-settings
  - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
  - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
