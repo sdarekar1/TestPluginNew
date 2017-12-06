@@ -3,6 +3,10 @@ language:
 jdk:
   - oraclejdk8
  
+cache:
+  directories:
+    - ~/.m2/repository
+    
 install:
   - mvn --settings .travis/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 before_install:
