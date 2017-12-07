@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.SujataDarekar</groupId>
   <artifactId>Test-plugin</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <packaging>jar</packaging>
   <name>com.github.SujataDarekar:Test-plugin</name>
   <description>Test plugin</description>
