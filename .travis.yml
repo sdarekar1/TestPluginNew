@@ -24,7 +24,7 @@ script:
 
 deploy:
     provider: script
-    script: "cp .travis.settings.xml /home/travis/.m2/settings.xml && mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release"
+  #  script: "cp .travis.settings.xml /home/travis/.m2/settings.xml && mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release"
     skip_cleanup: true
     on:
       repo: SujataDarekar/TestPlugin
