@@ -7,11 +7,11 @@ cache:
   directories:
     - ~/.m2/repository
     
-install:
-  - mvn --settings .travis/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
-before_install:
-  - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
-  - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
+#install:
+ # - mvn --settings .travis/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+#before_install:
+ # - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
+ # - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
   
 
 script:
@@ -32,13 +32,13 @@ script:
     #  repo: SujataDarekar/TestPlugin
     #  jdk: oraclejdk8
     
-deploy:
-  provider: releases
-  api_key: $GITHUB_API_KEY
-  file:
+#deploy:
+ # provider: releases
+ # api_key: $GITHUB_API_KEY
+ # file:
  #    - /home/travis/.m2/repository/com/github/SujataDarekar/Test-plugin/1.1.0/Test-plugin-1.1.0.jar
    #  - /home/travis/build/SujataDarekar/NewMavenRepository/Installer/TIB_BW_Maven_Plugin_1.2.2.zip
- skip_cleanup: true
+ #skip_cleanup: true
  # on: 
 #  tags: true
  # overwrite: true
