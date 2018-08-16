@@ -15,7 +15,8 @@ before_install:
   
 
 script:
-   - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
+    - mvn package
+  # - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
  #   - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
 # - mvn help:effective-settings
 # - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
@@ -23,10 +24,21 @@ script:
  #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
  #- mvn help:effective-settings
 
+#deploy:
+   # provider: script
+    #script: "cp .travis.settings.xml /home/travis/.m2/settings.xml && mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release"
+    #skip_cleanup: true
+  #  on:
+    #  repo: SujataDarekar/TestPlugin
+    #  jdk: oraclejdk8
+    
 deploy:
-    provider: script
-    script: "cp .travis.settings.xml /home/travis/.m2/settings.xml && mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release"
-    skip_cleanup: true
-    on:
-      repo: SujataDarekar/TestPlugin
-      jdk: oraclejdk8
+  provider: releases
+  api_key: $GITHUB_API_KEY
+  file:
+     - /home/travis/build/SujataDarekar/NewMavenRepository/Source/bw6-maven-plugin/target/bw6-maven-plugin-1.2.2.jar
+   #  - /home/travis/build/SujataDarekar/NewMavenRepository/Installer/TIB_BW_Maven_Plugin_1.2.2.zip
+  skip_cleanup: true
+  on: 
+ # tags: true
+ # overwrite: true
