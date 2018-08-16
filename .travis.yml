@@ -32,13 +32,13 @@ script:
     #  repo: SujataDarekar/TestPlugin
     #  jdk: oraclejdk8
     
-#deploy:
- # provider: releases
- # api_key: $GITHUB_API_KEY
- # file:
+deploy:
+  provider: releases
+  api_key: $GITHUB_API_KEY
+  file:
  #    - /home/travis/.m2/repository/com/github/SujataDarekar/Test-plugin/1.1.0/Test-plugin-1.1.0.jar
    #  - /home/travis/build/SujataDarekar/NewMavenRepository/Installer/TIB_BW_Maven_Plugin_1.2.2.zip
- #skip_cleanup: true
+ skip_cleanup: true
  # on: 
 #  tags: true
  # overwrite: true
