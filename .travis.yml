@@ -2,11 +2,43 @@ language:
     - java
 jdk:
   - oraclejdk8
-
-#before_script: cd /home/travis/build/TIBCOSoftware/bw6-plugin-maven/tree/master/Source/bw6-maven-plugin
+ 
+cache:
+  directories:
+    - ~/.m2/repository
+    
+install:
+  - mvn --settings .travis/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+before_install:
+  - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
+  - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
+  
 
 script:
- - mvn clean
- - mvn compile
- - mvn package
-  
+    - mvn package
+  # - mvn --settings .travis/settings.xml clean  verify -Dgpg.passphrase=$GPG_PASSPHRASE
+ #   - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
+# - mvn help:effective-settings
+# - mvn clean deploy -P release --settings /home/travis/build/SujataDarekar/TestPlugin/.travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE
+ #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release 
+ #- mvn --settings .travis/settings.xml -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release
+ #- mvn help:effective-settings
+
+#deploy:
+   # provider: script
+    #script: "cp .travis.settings.xml /home/travis/.m2/settings.xml && mvn -Dgpg.passphrase=$GPG_PASSPHRASE clean deploy -P release"
+    #skip_cleanup: true
+  #  on:
+    #  repo: SujataDarekar/TestPlugin
+    #  jdk: oraclejdk8
+    
+#deploy:
+ # provider: releases
+ # api_key: $GITHUB_API_KEY
+ # file:
+ #    - /home/travis/.m2/repository/com/github/SujataDarekar/Test-plugin/1.1.0/Test-plugin-1.1.0.jar
+   #  - /home/travis/build/SujataDarekar/NewMavenRepository/Installer/TIB_BW_Maven_Plugin_1.2.2.zip
+ # skip_cleanup: true
+ # on: 
+#  tags: true
+ # overwrite: true
