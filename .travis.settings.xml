@@ -7,9 +7,8 @@
         <server>
             <!-- Maven Central Deployment -->
             <id>ossrh</id>
-            <username>sdarekar</username>
-            <password>Sonatype123#</password>
-        </server>
+            <username>$SONATYPE_USERNAME</username>
+            <password>$SONATYPE_PASSWORD</password>
     </servers>
     <profiles>
       <profile>
